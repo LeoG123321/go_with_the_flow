@@ -7,6 +7,6 @@ private:
 public:
 	Source(int, double);
 	int get_source_location();
-	double source_temperater();
+	double get_source_temperature();
 };
 
