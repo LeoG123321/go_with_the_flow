@@ -1,16 +1,17 @@
 #pragma once
+#include <string>
 #include <vector>
+#include "Source.h"
 using namespace std;
 class HeatFlow
 {
 private:
 	double K;
-	int source_location;
-	vector<double> sections;
+	vector<double> bar;
+	vector<Source> sources;
 
 public:
-	HeatFlow(double, int, double, double, int);
+	HeatFlow(double, int, double, vector<Source>);
 	void tick();
-	void pretty_print();
+	string pretty_print();
 };
-

@@ -1,15 +1,32 @@
 #include "HeatFlow.h"
 
-HeatFlow::HeatFlow(double initial_temperature, int number_of_sections, double K, double source_temperature, int source_location) {
+HeatFlow::HeatFlow(double initial_temperature, int number_of_sections, double K, vector<Source> sources) {
 	this->K = K;
-	this->source_location = source_location;
 
+	for (int i = 0; i < number_of_sections; i++) {	//creates the bar and its starting temperature
+		bar.push_back(initial_temperature);
+	}
+
+	for (int i = 0; i < sources.size(); i++) {	//Sets the sources at the locations and sets the temperatures
+		bar[sources[i].get_source_location()] = sources[i].get_source_temperature();
+	}
 }
 
 void HeatFlow::tick() {
+	vector<double> ghost_bar = bar;
+	ghost_bar.push_back(ghost_bar[ghost_bar.size()]);
 
+	for (int i = 0; i < bar.size(); i++) {
+
+	}
 }
 
-void HeatFlow::pretty_print() {
-
+string HeatFlow::pretty_print() {
+	string place_holder;
+	for (int i = 0; i < bar.size(); i++) {
+		place_holder += "[ ";
+		place_holder += to_string(bar[i]);
+		place_holder += " ]";
+	}
+	return place_holder;
 }
