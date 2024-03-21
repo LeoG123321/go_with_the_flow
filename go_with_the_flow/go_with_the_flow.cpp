@@ -15,7 +15,8 @@ int main()
     Source source1(0, 100);
     source_list.push_back(source1);
     string input = "";
-    HeatFlow metal_bar (10.0, 8, 1.0, source_list);
+    HeatFlow metal_bar (10.0, 5, 0.1, source_list);
+    cout << metal_bar.pretty_print() << endl;
 
     while (input != "n") {
         try_again:
@@ -28,7 +29,7 @@ int main()
 
         if (input == "y") {
             metal_bar.tick();
-            metal_bar.pretty_print();
+            cout << metal_bar.pretty_print() << endl;
         }
         else if (input != "n") {
             cout << "Error: Wrong Input" << endl << endl;
@@ -36,4 +37,3 @@ int main()
         }
     }
 }
-
